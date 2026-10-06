@@ -5,11 +5,13 @@
     <title>나의 첫 To-Do 앱</title>
     <style>
         body { font-family: Arial, sans-serif; display: flex; justify-content: center; margin-top: 50px; background-color: #f4f4f9; }
-        .todo-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 320px; }
-        h2 { margin-top: 0; color: #333; }
-        input { width: 65%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        .todo-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 320px; text-align: center; }
+        .app-image { width: 100%; max-height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
+        h2 { margin-top: 0; color: #333; text-align: left; }
+        .input-box { display: flex; gap: 5px; }
+        input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
         button.add-btn { padding: 8px 12px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        ul { list-style: none; padding: 0; margin-top: 20px; }
+        ul { list-style: none; padding: 0; margin-top: 20px; text-align: left; }
         li { padding: 8px; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; }
         li.completed span { text-decoration: line-through; color: #888; }
         .del-btn { background-color: #dc3545; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; }
@@ -18,9 +20,14 @@
 </head>
 <body>
     <div class="todo-container">
+        <!-- 📷 이미지 태그 추가 부분 (파일명이 logo.jpg라면 src="logo.jpg"로 수정) -->
+        <img src="logo.png" alt="앱 메인 이미지" class="app-image" onerror="this.style.display='none'">
+
         <h2>📝 오늘의 할 일</h2>
-        <input type="text" id="todoInput" placeholder="할 일을 입력하세요">
-        <button class="add-btn" onclick="addTodo()">추가</button>
+        <div class="input-box">
+            <input type="text" id="todoInput" placeholder="할 일을 입력하세요">
+            <button class="add-btn" onclick="addTodo()">추가</button>
+        </div>
         <ul id="todoList"></ul>
     </div>
 
