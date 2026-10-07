@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CULTURE - BRACELET STUDIO</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #ffffff; color: #111; line-height: 1.6; }
+
+        header { background-color: #ffffff; padding: 1.2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: #111; text-decoration: none; }
+        nav ul { list-style: none; display: flex; align-items: center; gap: 2rem; }
+        nav li { position: relative; }
+        nav a { color: #555; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+        nav a:hover, nav a.active { color: #000; }
+
+        .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #ffffff; min-width: 220px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); border-radius: 8px; border: 1px solid #eee; padding: 10px 0; z-index: 1001; }
+        .dropdown-menu li { width: 100%; }
+        .dropdown-menu a { padding: 10px 20px; font-size: 0.88rem; color: #666; font-weight: 600; }
+        .dropdown-menu a:hover { background-color: #f8f9fa; color: #000; }
+        nav li.dropdown:hover .dropdown-menu { display: block; }
+
+        .tab-wrapper { position: sticky; top: 60px; background: #ffffff; border-bottom: 2px solid #eaeaea; z-index: 999; }
+        .tab-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; gap: 30px; }
+        .tab-btn { background: none; border: none; font-size: 1.1rem; font-weight: 700; color: #888; padding: 18px 5px; cursor: pointer; text-decoration: none; }
+        .tab-btn.active { color: #111; position: relative; }
+        .tab-btn.active::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 3px; background-color: #111; }
+
+        .content-container { max-width: 1100px; margin: 0 auto; padding: 20px 20px 100px; }
+        .section-block { padding-top: 80px; margin-top: -20px; padding-bottom: 80px; border-bottom: 1px solid #f0f0f0; }
+
+        .sec-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; }
+        .sec-sub { font-size: 1.2rem; font-weight: 700; color: #555; margin-bottom: 40px; }
+
+        /* BRACELET CODE List */
+        .code-list { display: flex; flex-direction: column; gap: 40px; }
+        .code-item { border-left: 4px solid #111; padding-left: 25px; }
+        .code-num { font-size: 1.1rem; font-weight: 800; color: #007bff; margin-bottom: 5px; }
+        .code-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+        .code-sub { font-size: 1.1rem; font-weight: 700; color: #333; margin-bottom: 15px; }
+        .code-desc { color: #555; line-height: 1.8; word-break: keep-all; }
+        .check-list { margin-top: 15px; background: #f9f9f9; padding: 20px; border-radius: 8px; }
+        .check-list li { list-style: none; font-weight: 700; color: #111; margin-bottom: 5px; }
+
+        footer { background-color: #f9f9f9; border-top: 1px solid #eee; color: #888; text-align: center; padding: 35px; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">BRACELET STUDIO</a>
+        <nav>
+            <ul>
+                <li class="dropdown"><a href="about.html">ABOUT US ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html#about-us">ABOUT US</a></li>
+                        <li><a href="about.html#who-we-are">WHO WE ARE</a></li>
+                        <li><a href="about.html#history">HISTORY</a></li>
+                        <li><a href="about.html#contact">CONTACT</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="work.html">OUR WORK ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="work.html#what-we-do">WHAT WE DO</a></li>
+                        <li><a href="work.html#our-teams">OUR TEAMS</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="culture.html" class="active">CULTURE ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#bracelet-code">BRACELET CODE</a></li>
+                        <li><a href="#life-in-bracelet">LIFE IN BRACELET</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="careers.html">CAREERS ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="careers.html#positions">OPEN POSITIONS</a></li>
+                        <li><a href="careers.html#process">RECRUITMENT PROCESS</a></li>
+                        <li><a href="careers.html#benefits">BENEFITS</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="tab-wrapper">
+        <div class="tab-container">
+            <a href="#bracelet-code" class="tab-btn active">BRACELET CODE</a>
+            <a href="#life-in-bracelet" class="tab-btn">LIFE IN BRACELET</a>
+        </div>
+    </div>
+
+    <main class="content-container">
+
+        <!-- 1. BRACELET CODE -->
+        <section id="bracelet-code" class="section-block">
+            <h2 class="sec-title">BRACELET STUDIO</h2>
+            <div class="sec-sub">Think Bigger. Build Better. Global NO. 1</div>
+
+            <div class="code-list">
+                <!-- 01 -->
+                <div class="code-item">
+                    <div class="code-num">01</div>
+                    <div class="code-title">Speak Straight. Build Trust.</div>
+                    <div class="code-sub">솔직하게 말하고, 명확하게 소통합니다.</div>
+                    <p class="code-desc">
+                        라이브에서는 작은 문제가 큰 문제로 이어집니다. 그래서 우리는 불편하더라도 필요한 이야기를 합니다.<br>
+                        좋은 점은 좋다고 말하고, 문제는 문제라고 말합니다. 직급보다 사실을 보고, 감정보다 해결을 이야기합니다.<br>
+                        솔직함은 단순히 관계만을 위한 것이 아니라, 최상의 결과를 도출하기 위한 방식입니다.
+                    </p>
+                </div>
+
+                <!-- 02 -->
+                <div class="code-item">
+                    <div class="code-num">02</div>
+                    <div class="code-title">Built for Live.</div>
+                    <div class="code-sub">현장에서 통하는 결과를 만듭니다.</div>
+                    <p class="code-desc">
+                        라이브는 기다려주지 않습니다. 방송은 정해진 시간에 시작되고, 토너먼트는 멈추지 않으며, 플레이어와 팬의 경험은 실시간으로 만들어집니다.
+                    </p>
+                    <div class="check-list">
+                        <p style="font-weight: bold; margin-bottom: 8px;">그래서 우리의 기준은 단순합니다:</p>
+                        <ul>
+                            <li>✔ 실제로 작동하는가?</li>
+                            <li>✔ 현장의 변수를 견뎌낼 수 있는가?</li>
+                            <li>✔ 사용자의 경험을 향상시키는가?</li>
+                        </ul>
+                    </div>
+                    <p class="code-desc" style="margin-top: 10px;">우리의 가장 중요한 테스트 환경은 언제나 Live입니다.</p>
+                </div>
+
+                <!-- 03 -->
+                <div class="code-item">
+                    <div class="code-num">03</div>
+                    <div class="code-title">Make Each Other Better.</div>
+                    <div class="code-sub">혼자 잘하는 것보다, 함께 더 잘합니다.</div>
+                    <p class="code-desc">
+                        Design, Production, Development, QA, Operations. 서로 다른 전문성이 하나의 현장에서 만납니다.<br>
+                        우리는 각자의 영역을 지키면서도 필요할 때는 경계를 넘어 협력합니다.<br>
+                        경험을 공유하고, 피드백을 주고받고, 서로의 기준을 높입니다. 좋은 동료는 일을 나누는 사람이 아니라 서로의 결과를 더 좋게 만드는 사람입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. LIFE IN BRACELET -->
+        <section id="life-in-bracelet" class="section-block">
+            <h2 class="sec-title">LIFE IN BRACELET</h2>
+            <div class="sec-sub">자율과 책임 속에서 함께 성장하는 열린 문화</div>
+            <p style="color: #555; line-height: 1.8;">
+                BRACELET STUDIO는 일하는 방식과 삶의 리듬을 함께 존중합니다. 수평적인 소통 문화 아래 자유롭게 아이디어를 개진하고, 성취감을 느끼며 동료들과 함께 시너지를 발휘하는 환경을 제공합니다.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 BRACELET STUDIO. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section-block');
+            const navLi = document.querySelectorAll('.tab-container a');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    if (pageYOffset >= (section.offsetTop - 180)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLi.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href').includes(current)) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

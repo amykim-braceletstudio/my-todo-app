@@ -3,70 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRACELET STUDIO - Main</title>
+    <title>BRACELET STUDIO</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #ffffff; color: #333; line-height: 1.6; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #ffffff; color: #111; line-height: 1.6; }
         
-        /* Header & Navigation */
-        header { background-color: #ffffff; color: #1a252f; padding: 1.2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: #1a252f; text-decoration: none; letter-spacing: -0.5px; }
-        nav a { color: #555; text-decoration: none; margin-left: 1.8rem; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
-        nav a:hover { color: #000; }
+        /* GNB Navigation */
+        header { background-color: #ffffff; padding: 1.2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: #111; text-decoration: none; letter-spacing: -0.5px; }
+        
+        nav ul { list-style: none; display: flex; align-items: center; gap: 2rem; }
+        nav li { position: relative; }
+        nav a { color: #555; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: block; padding: 5px 0; }
+        nav a:hover, nav a.active { color: #000; }
 
-        /* Hero Section */
-        .hero { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('08.png'), url('08.jpg'); background-size: cover; background-position: center; color: white; text-align: center; padding: 120px 20px; }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 800; letter-spacing: -1px; }
-        .hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.9; }
-        .hero-btn { display: inline-block; background-color: #ffffff; color: #111111; padding: 12px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 1.05rem; transition: background 0.2s; }
-        .hero-btn:hover { background-color: #e2e2e2; }
+        /* Dropdown */
+        .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #ffffff; min-width: 220px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); border-radius: 8px; border: 1px solid #eee; padding: 10px 0; z-index: 1001; }
+        .dropdown-menu li { width: 100%; }
+        .dropdown-menu a { padding: 10px 20px; font-size: 0.88rem; color: #666; font-weight: 600; }
+        .dropdown-menu a:hover { background-color: #f8f9fa; color: #000; }
+        nav li.dropdown:hover .dropdown-menu { display: block; }
 
-        /* Quick Menu Container */
-        .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
-        .section-title { text-align: center; font-size: 2rem; margin-bottom: 50px; font-weight: 700; letter-spacing: -0.5px; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; padding: 35px 25px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .card-icon { font-size: 2.8rem; margin-bottom: 15px; }
-        .card h3 { margin-bottom: 12px; color: #111; font-size: 1.25rem; font-weight: 700; }
-        .card p { color: #666; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6; word-break: keep-all; }
-        .card-link { display: inline-block; color: #111111; text-decoration: none; font-weight: 700; }
-        .card-link:hover { text-decoration: underline; }
+        /* Hero Section - Video/Logo Only */
+        .hero { background: #000; color: white; height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden; }
+        .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); opacity: 0.4; object-fit: cover; }
+        .hero-logo { position: relative; z-index: 2; font-size: 3.5rem; font-weight: 900; letter-spacing: -1px; }
 
-        /* Footer */
-        footer { background-color: #f9f9f9; border-top: 1px solid #eee; color: #888; text-align: center; padding: 30px; font-size: 0.85rem; margin-top: 50px; }
+        /* Main Shortcuts Section */
+        .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
+        .shortcuts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+        .card { background: #fdfdfd; border: 1px solid #eaeaea; border-radius: 12px; padding: 40px 30px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; word-break: keep-all; }
+        .card p { color: #666; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; word-break: keep-all; }
+        .card-link { color: #111; text-decoration: none; font-weight: 800; font-size: 1rem; display: inline-flex; align-items: center; gap: 5px; }
+
+        footer { background-color: #f9f9f9; border-top: 1px solid #eee; color: #888; text-align: center; padding: 35px; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
-    <!-- 헤더 / 네비게이션 -->
     <header>
         <a href="index.html" class="logo">BRACELET STUDIO</a>
         <nav>
-            <a href="careers.html">CAREERS</a>
-            <a href="todo.html">📝 To-Do 앱</a>
-            <a href="https://www.wsop.com/schedule/" target="_blank">🌐 WSOP 스케줄</a>
+            <ul>
+                <li class="dropdown">
+                    <a href="about.html">ABOUT US ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html#about-us">ABOUT US</a></li>
+                        <li><a href="about.html#who-we-are">WHO WE ARE</a></li>
+                        <li><a href="about.html#history">HISTORY</a></li>
+                        <li><a href="about.html#contact">CONTACT</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="work.html">OUR WORK ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="work.html#what-we-do">WHAT WE DO</a></li>
+                        <li><a href="work.html#our-teams">OUR TEAMS</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="culture.html">CULTURE ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="culture.html#bracelet-code">BRACELET CODE</a></li>
+                        <li><a href="culture.html#life-in-bracelet">LIFE IN BRACELET</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="careers.html">CAREERS ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="careers.html#positions">OPEN POSITIONS</a></li>
+                        <li><a href="careers.html#process">RECRUITMENT PROCESS</a></li>
+                        <li><a href="careers.html#benefits">BENEFITS</a></li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
     </header>
 
-    <!-- 히어로 배너 (메인 대문) -->
+    <!-- Hero Section (로고만 유지) -->
     <section class="hero">
-        <h1>BRACELET STUDIO</h1>
-        <p>Find Your Seat at the Table. 탁월한 구성원들과 함께 더 큰 성과를 만들어가는 공간입니다.</p>
-        <a href="careers.html" class="hero-btn">CAREERS 바로가기</a>
+        <video class="hero-video" autoplay loop muted playsinline poster="08.png">
+            <source src="bg-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-logo">BRACELET STUDIO</div>
     </section>
 
-    <!-- 퀵 메뉴 세션 -->
-    <section class="container">
-        <h2 class="section-title">Quick Menu</h2>
-        <div class="services-grid">
+    <!-- 바로가기 메인 그리드 -->
+    <main class="container">
+        <div class="shortcuts-grid">
             <div class="card">
-                <div class="card-icon">💼</div>
-                <h3>CAREERS</h3>
-                <p>채용 공고부터 영입 프로세스, 최고의 보상과 환경을 제공하는 Benefits까지 한눈에 확인하세요.</p>
-                <a href="careers.html" class="card-link">커리어 둘러보기 &rarr;</a>
+                <div>
+                    <h3>We Build the Future of Live Poker</h3>
+                    <p>BRACELET STUDIO는 라이브 포커를 중심으로 기술, 콘텐츠, 플랫폼, 프로덕션을 하나의 경험으로 연결합니다.</p>
+                </div>
+                <a href="about.html" class="card-link">ABOUT US ↗</a>
             </div>
+
             <div class="card">
-                <div class="card-icon">📝</div>
-                <h3>To-Do List 앱</h3>
-                <p>일정을 쉽고 빠르게 관리하고 완료 및 삭제 기능을 통해 개인의 생산성을 최대로 끌어올립니다.</p
+                <div>
+                    <h3>From the Table to the World</h3>
+                    <p>테이블 위의 순간이 전 세계로 전해지기까지, 보이지 않는 곳에서 수많은 기술과 사람의 움직임이 이어집니다.</p>
+                </div>
+                <a href="work.html#what-we-do" class="card-link">WHAT WE DO ↗</a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Expertise with Ownership, Collaboration with Purpose</h3>
+                    <p>우리는 각자의 전문성을 깊이 존중하며, 개인의 역할을 넘어 하나의 목표를 향해 함께 움직입니다.</p>
+                </div>
+                <a href="culture.html" class="card-link">CULTURE ↗</a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Building What’s Next</h3>
+                    <p>글로벌 라이브 이벤트의 운영 방식부터 플레이어가 경험하는 서비스, 그리고 포커를 바라보는 새로운 시각을 만들어갑니다.</p>
+                </div>
+                <a href="careers.html" class="card-link">CAREERS ↗</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 BRACELET STUDIO. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

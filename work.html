@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OUR WORK - BRACELET STUDIO</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #ffffff; color: #111; line-height: 1.6; }
+
+        header { background-color: #ffffff; padding: 1.2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: #111; text-decoration: none; }
+        nav ul { list-style: none; display: flex; align-items: center; gap: 2rem; }
+        nav li { position: relative; }
+        nav a { color: #555; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+        nav a:hover, nav a.active { color: #000; }
+
+        .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #ffffff; min-width: 220px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); border-radius: 8px; border: 1px solid #eee; padding: 10px 0; z-index: 1001; }
+        .dropdown-menu li { width: 100%; }
+        .dropdown-menu a { padding: 10px 20px; font-size: 0.88rem; color: #666; font-weight: 600; }
+        .dropdown-menu a:hover { background-color: #f8f9fa; color: #000; }
+        nav li.dropdown:hover .dropdown-menu { display: block; }
+
+        .tab-wrapper { position: sticky; top: 60px; background: #ffffff; border-bottom: 2px solid #eaeaea; z-index: 999; }
+        .tab-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; gap: 30px; }
+        .tab-btn { background: none; border: none; font-size: 1.1rem; font-weight: 700; color: #888; padding: 18px 5px; cursor: pointer; text-decoration: none; }
+        .tab-btn.active { color: #111; position: relative; }
+        .tab-btn.active::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 3px; background-color: #111; }
+
+        .content-container { max-width: 1100px; margin: 0 auto; padding: 20px 20px 100px; }
+        .section-block { padding-top: 80px; margin-top: -20px; padding-bottom: 80px; border-bottom: 1px solid #f0f0f0; }
+
+        .sec-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; }
+        .sec-sub { font-size: 1.2rem; font-weight: 700; color: #555; margin-bottom: 30px; word-break: keep-all; }
+
+        /* WHAT WE DO - 5개 통합 카드 */
+        .work-list { display: flex; flex-direction: column; gap: 30px; }
+        .work-card { border: 1px solid #eee; border-radius: 12px; padding: 35px; background: #fdfdfd; }
+        .work-num { font-size: 0.9rem; font-weight: 800; color: #007bff; margin-bottom: 10px; }
+        .work-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+        .work-card .tech-stack { font-size: 0.95rem; font-weight: 700; color: #444; margin-bottom: 15px; }
+        .work-card p { color: #666; line-height: 1.7; word-break: keep-all; }
+
+        /* OUR TEAMS */
+        .dept-title { font-size: 1.8rem; font-weight: 800; color: #111; margin: 40px 0 15px; border-bottom: 2px solid #111; padding-bottom: 10px; }
+        .dept-intro { font-size: 1.05rem; color: #444; line-height: 1.8; margin-bottom: 30px; word-break: keep-all; }
+        .roles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .role-card { background: #f9f9f9; padding: 25px; border-radius: 10px; border: 1px solid #eee; }
+        .role-num { font-size: 1.2rem; font-weight: 800; color: #111; }
+        .role-title { font-size: 1.2rem; font-weight: 800; margin: 5px 0; }
+        .role-stack { font-size: 0.85rem; font-weight: 700; color: #007bff; margin-bottom: 10px; }
+        .role-card p { font-size: 0.92rem; color: #666; line-height: 1.6; word-break: keep-all; }
+
+        footer { background-color: #f9f9f9; border-top: 1px solid #eee; color: #888; text-align: center; padding: 35px; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">BRACELET STUDIO</a>
+        <nav>
+            <ul>
+                <li class="dropdown"><a href="about.html">ABOUT US ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html#about-us">ABOUT US</a></li>
+                        <li><a href="about.html#who-we-are">WHO WE ARE</a></li>
+                        <li><a href="about.html#history">HISTORY</a></li>
+                        <li><a href="about.html#contact">CONTACT</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="work.html" class="active">OUR WORK ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#what-we-do">WHAT WE DO</a></li>
+                        <li><a href="#our-teams">OUR TEAMS</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="culture.html">CULTURE ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="culture.html#bracelet-code">BRACELET CODE</a></li>
+                        <li><a href="culture.html#life-in-bracelet">LIFE IN BRACELET</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="careers.html">CAREERS ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="careers.html#positions">OPEN POSITIONS</a></li>
+                        <li><a href="careers.html#process">RECRUITMENT PROCESS</a></li>
+                        <li><a href="careers.html#benefits">BENEFITS</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="tab-wrapper">
+        <div class="tab-container">
+            <a href="#what-we-do" class="tab-btn active">WHAT WE DO</a>
+            <a href="#our-teams" class="tab-btn">OUR TEAMS</a>
+        </div>
+    </div>
+
+    <main class="content-container">
+
+        <!-- 1. WHAT WE DO (5개 일렬 통합) -->
+        <section id="what-we-do" class="section-block">
+            <h2 class="sec-title">Reimagining Live Tournaments</h2>
+            <div class="sec-sub">Infra · Platform · Tech · Portal · Media</div>
+
+            <div class="work-list">
+                <div class="work-card">
+                    <div class="work-num">1/5</div>
+                    <h3>WSOP LIVE</h3>
+                    <div class="tech-stack">현장과 플랫폼을 실시간으로 잇는 스마트 토너먼트 인프라</div>
+                    <p>대기 시간 없는 즉각적인 이벤트 바이인을 지원해 라이브 토너먼트 경험을 혁신합니다. 온라인 플랫폼과 오프라인 대회를 매끄럽게 연결해 플레이어가 경기에만 몰입할 수 있는 환경을 만듭니다.</p>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-num">2/5</div>
+                    <h3>POKERSTAKE</h3>
+                    <div class="tech-stack">팬과 프로를 하나로 묶는 글로벌 포커 스테이킹 생태계</div>
+                    <p>팬들은 프로에게 투자하고, 선수들은 자신의 경기를 상품화하여 판매하는 혁신적인 스테이킹 플랫폼입니다. 단순한 관람을 넘어 능동적인 참여를 유도하며, 모두가 연결된 통합 생태계를 구축합니다.</p>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-num">3/5</div>
+                    <h3>EBS (Event Broadcasting System)</h3>
+                    <div class="tech-stack">포커 데이터를 실시간 방송 자막으로 전환하는 지능형 그래픽 오버레이 엔진</div>
+                    <p>테이블 위의 칩 흐름과 플레이어 데이터를 인텔리전트 방송 그래픽으로 즉시 변환합니다. 제작팀에는 정교한 제어 도구를, 글로벌 시청자에게는 압도적인 현장감과 관람 몰입감을 제공합니다.</p>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-num">4/5</div>
+                    <h3>WSOP.com</h3>
+                    <div class="tech-stack">전 세계 포커 팬과 대회를 이어주는 디지털 포털</div>
+                    <p>실시간 토너먼트 데이터, 라이브 스트리밍, 대진표 및 결과를 가장 빠르게 전달하는 메인 거점입니다. 복잡한 경기 정보를 직관적인 UX로 풀어내 팬들의 접점을 확대합니다.</p>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-num">5/5</div>
+                    <h3>WSOP Broadcast Network</h3>
+                    <div class="tech-stack">공식 유튜브 채널을 중심으로 한 글로벌 영상 콘텐츠 생태계</div>
+                    <p>하이라이트, 라이브 스트리밍, 오리지널 콘텐츠를 통해 전 세계 팬들에게 24/7 포커 엔터테인먼트를 제공합니다. 독보적인 프로덕션 퀄리티로 글로벌 포커 팬덤을 지속해서 확장합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OUR TEAMS -->
+        <section id="our-teams" class="section-block">
+            <h2 class="sec-title">One Studio, Two Engines</h2>
+            <div class="sec-sub">WSOP 대회 현장의 모든 것을 지원합니다. 현장을 관리하고 운영하는 기술부터 플레이어의 여정, 그리고 그 순간을 전 세계에 전달하는 미디어 콘텐츠까지. 하나의 팀이 WSOP 라이브의 처음과 끝을 완성합니다.</div>
+
+            <!-- See What the Team Creates -->
+            <div style="background: #f4f5f7; padding: 30px; border-radius: 10px; margin-bottom: 40px;">
+                <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">See What the Team Creates</h3>
+                <p style="color: #555;">Roles with Real Impact: 하나하나의 역할이 모여 최고의 무대를 만듭니다. 방송실의 수많은 화면부터 글로벌 대회 현장과 제품 발표까지, 각자의 전문성이 하나의 경험으로 이어집니다.</p>
+            </div>
+
+            <!-- DEV DEPARTMENT -->
+            <div class="dept-title">DEV DEPARTMENT</div>
+            <p class="dept-intro">
+                복잡한 현장을 하나의 디지털 경험으로 연결합니다.<br>
+                플레이어의 등록과 경기 참여부터 토너먼트 운영, 실시간 데이터, 방송 그래픽, 글로벌 팬을 위한 디지털 플랫폼까지. 우리는 현장에서 발생하는 모든 순간을 데이터와 기술로 연결하고, 더 빠르고 정확하며 몰입도 높은 경험으로 만들어갑니다.<br><br>
+                WSOP LIVE는 플레이어와 토너먼트 운영을 연결하고, PokerStake는 선수와 팬을 연결하며, EBS (Event Broadcasting System)는 테이블의 실시간 데이터를 방송 화면으로 확장합니다. 그리고 WSOP.com은 전 세계 팬들에게 토너먼트의 정보와 경험을 전달합니다.
+            </p>
+
+            <div class="roles-grid">
+                <div class="role-card">
+                    <div class="role-num">01</div>
+                    <div class="role-title">Design</div>
+                    <div class="role-stack">Discovery · UX/UI · Product Planning</div>
+                    <p>현장의 문제를 발견하고, 더 나은 경험을 설계합니다. 포커 관계자와 플레이어의 행동과 요구를 분석해 라이브 토너먼트의 불필요한 대기와 복잡한 과정을 줄입니다. 운영 효율은 높이고, 플레이어는 게임에 더 깊이 몰입할 수 있도록 UX/UI와 기능을 설계합니다.</p>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-num">02</div>
+                    <div class="role-title">App</div>
+                    <div class="role-stack">Flutter · Desktop · RFID / IoT</div>
+                    <p>오프라인 현장을 기술로 연결합니다. Flutter와 IoT 기술을 기반으로 선수용 모바일 앱, 토너먼트 운영 앱, RFID 연동 시스템을 개발합니다. 현장에서 발생하는 데이터를 실시간으로 연결하고 플레이어부터 딜러, 스태프, 운영팀까지 하나의 시스템 안에서 움직일 수 있도록 만듭니다.</p>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-num">03</div>
+                    <div class="role-title">Frontend</div>
+                    <div class="role-stack">Web · Back Office · Realtime UI</div>
+                    <p>실시간으로 움직이는 경험을 만듭니다. 플레이어 웹과 백오피스 UI부터 Cloudflare·AWS CDN, WebSocket 기반 실시간 통신, 대회 운영을 위한 챗봇과 인터페이스까지. 빠르게 변하는 라이브 현장에서도 정보가 즉시 전달되고, 사용자의 행동에 즉각 반응하는 Live-ready Interface를 구축합니다.</p>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-num">04</div>
+                    <div class="role-title">Backend</div>
+                    <div class="role-stack">AWS · Data · Distributed Systems</div>
+                    <p>보이지 않는 곳에서 모든 것을 연결합니다. AWS 기반의 백엔드 서비스와 데이터 저장소를 설계하고 대규모 트래픽과 데이터를 안정적으로 처리합니다. 수많은 테이블에서 발생하는 WSOP 대회 데이터를 실시간으로 수집·처리하고, 운영과 분석, 방송과 디지털 서비스가 활용할 수 있는 데이터 인프라를 만듭니다.</p>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-num">05</div>
+                    <div class="role-title">QA</div>
+                    <div class="role-stack">Quality · Automation · Field Readiness</div>
+                    <p>라이브는 한 번의 실수도 기다려주지 않습니다. 모든 제품과 기능을 테스트하고 검증하며 실제 대회 환경에서 발생할 수 있는 다양한 상황을 사전에 검증합니다. 테스트 자동화를 지속적으로 도입해 반복적인 검증은 더 빠르고 정교하게, 서비스의 안정성과 완성도는 더 높게. 문제가 발생하기 전에 발견하는 것. 그것이 우리가 생각하는 QA입니다.</p>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-num">06</div>
+                    <div class="role-title">Operations</div>
+                    <div class="role-stack">Service Ops · CS/CRM · On-Site Support</div>
+                    <p>기술이 현장에서 제대로 작동하도록 완성합니다. WSOP+ (WSOP LIVE)와 PokerStake의 서비스 운영을 비롯해 CS/CRM, 현장 지원, 스태프 교육과 커뮤니케이션까지 서비스가 실제 현장에서 작동하기 위한 모든 과정을 연결합니다. 개발된 기술이 현장에 안착하고, 현장의 피드백이 다시 서비스의 개선으로 이어지도록 합니다.</p>
+                </div>
+            </div>
+
+            <!-- PRODUCTION DEPARTMENT -->
+            <div class="dept-title" style="margin-top: 60px;">PRODUCTION DEPARTMENT</div>
+            <p class="dept-intro">
+                라이브의 순간을 세계가 보는 이야기로 만듭니다.<br>
+                올림픽이나 월드컵처럼 거대하고 역동적인 라이브 포커 토너먼트의 결정적 순간을 전 세계에 전달하는 미디어 콘텐츠 전문 팀입니다. 프로젝트 기획부터 촬영과 기술 운영, 편집과 후반 제작, 아카이빙까지 콘텐츠의 전 과정을 담당하고 있습니다. 라이브 현장의 생생한 긴장감과 선수들의 서사를 포착하여, 한 번뿐인 현장의 순간을 전 세계 시청자가 함께 몰입하고 즐길 수 있는 고품질 영상 콘텐츠로 완성합니다.
+            </p>
+
+            <div class="roles-grid">
+                <div class="role-card">
+                    <div class="role-num">01</div>
+                    <div class="role-title">PM</div>
+                    <div class="role-stack">Project Management · Schedule · Delivery</div>
+                    <p>복잡한 제작 현장을 하나의 매끄러운 흐름으로 만듭니다. 프로젝트 목표와 제작 범위를 정의하고 일정, 예산, 인력과 현장 커뮤니케이션을 조율합니다. 기획부터 최종 납품까지 전체 제작 흐름을 관리합니다.</p>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-num">02</div>
+                    <div class="role-title">Technical</div>
+                    <div class="role-stack">Camera · Signal · Live Systems</div>
+                    <p>라이브 현장이 차질 없이 움직이는 기반을 만듭니다. 촬영 장비와 라이브, 중계 시스템을 설계하고 운영합니다. 변수와 변화가 많은 현장에서 프로젝트가 원활하게 진행되도록 시스템을 설계합니다.</p>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-num">03</div>
+                    <div class="role-title">Creative Planning</div>
+                    <div class="role-stack">Concept · Story · Content Planning</div>
+                    <p>승부의 맥락을 짚어 프로그램의 뼈대를 세웁니다. 프로그램의 콘셉트와 내러티브, 촬영 구성을 기획합니다. 포커의 긴장감과 선수의 이야기를 시청자가 이해하기 쉬운 콘텐츠 언어로 설계합니다.</p>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-num">04</div>
+                    <div class="role-title">Post Production</div>
+                    <div class="role-stack">Post Workflow · Graphics · Finishing</div>
+                    <p>후반 제작의 정교함으로 제작물의 가치를 끌어올립니다. 촬영 이후의 후반 제작 과정을 통합 관리합니다. 편집, 그래픽, 사운드와 색보정을 연결해 플랫폼과 목적에 맞는 최종 결과물을 완성합니다.</p>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-num">05</div>
+                    <div class="role-title">Archive</div>
+                    <div class="role-stack">Media Assets · Metadata · Retrieval</div>
+                    <p>축적된 영상 데이터를 체계화하여 즉각적인 활용 환경을 만듭니다. 글로벌 현장에서 축적되는 영상과 제작 자산을 체계적으로 보존합니다. 필요한 장면을 빠르게 찾고 재활용할 수 있도록 메타데이터와 아카이브를 관리합니다.</p>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-num">06</div>
+                    <div class="role-title">Editing</div>
+                    <div class="role-stack">Edit · Direction · Storytelling</div>
+                    <p>현장의 열기를 몰입감 있게 전달합니다. 수많은 라이브 장면에서 결정적인 순간을 선별하고 리듬과 서사를 만듭니다. 경기의 흐름과 인물의 감정을 하나의 몰입도 높은 영상으로 편집합니다.</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 BRACELET STUDIO. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section-block');
+            const navLi = document.querySelectorAll('.tab-container a');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    if (pageYOffset >= (section.offsetTop - 180)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLi.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href').includes(current)) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
