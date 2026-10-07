@@ -2,28 +2,116 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>My Portal & To-Do App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Corporate Portal & Services</title>
     <style>
-        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background-color: #f4f4f9; }
-        .main-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); width: 340px; text-align: center; }
-        .main-img { width: 100%; border-radius: 8px; margin-bottom: 20px; object-fit: cover; }
-        .btn-group { display: flex; flex-direction: column; gap: 12px; }
-        .btn { padding: 12px 16px; font-size: 15px; font-weight: bold; color: white; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; display: block; transition: 0.2s; }
-        .btn-todo { background-color: #28a745; }
-        .btn-todo:hover { background-color: #218838; }
-        .btn-link { background-color: #007bff; }
-        .btn-link:hover { background-color: #0069d9; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; color: #333; line-height: 1.6; }
+        
+        /* Header & Navigation */
+        header { background-color: #1a252f; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #4caf50; text-decoration: none; }
+        nav a { color: white; text-decoration: none; margin-left: 1.5rem; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #4caf50; }
+
+        /* Hero Section */
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('08.png'); background-size: cover; background-position: center; color: white; text-align: center; padding: 100px 20px; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-btn { display: inline-block; background-color: #4caf50; color: white; padding: 12px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 1.1rem; transition: background 0.3s; }
+        .hero-btn:hover { background-color: #45a049; }
+
+        /* Section Commons */
+        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; color: #1a252f; position: relative; }
+        .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: #4caf50; margin: 10px auto 0; }
+
+        /* Services Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: white; border-radius: 10px; padding: 30px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card-icon { font-size: 2.5rem; margin-bottom: 15px; color: #4caf50; }
+        .card h3 { margin-bottom: 15px; color: #1a252f; }
+        .card p { color: #666; font-size: 0.95rem; }
+        .card-link { display: inline-block; margin-top: 15px; color: #007bff; text-decoration: none; font-weight: bold; }
+
+        /* Contact Section */
+        .contact { background-color: #e9ecef; }
+        .contact-form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        .contact-form input, .contact-form textarea { padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; }
+        .contact-form button { background-color: #1a252f; color: white; padding: 12px; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+        .contact-form button:hover { background-color: #34495e; }
+
+        /* Footer */
+        footer { background-color: #1a252f; color: #aaa; text-align: center; padding: 20px; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-    <div class="main-card">
-        <!-- 메인 사진 (파일명에 맞춰 08.png / 08.jpg로 자동 연결) -->
-        <img src="08.png" alt="메인 사진" class="main-img" onerror="this.src='08.jpg'">
 
-        <div class="btn-group">
-            <a href="todo.html" class="btn btn-todo">📝 To-Do List 이동하기</a>
-            <a href="https://www.wsop.com/schedule/" target="_blank" class="btn btn-link">🌐 WSOP 스케줄 바로가기</a>
+    <!-- 헤더 / 네비게이션 -->
+    <header>
+        <a href="#" class="logo">🚀 My Company</a>
+        <nav>
+            <a href="#about">소개</a>
+            <a href="#services">서비스</a>
+            <a href="todo.html">📝 To-Do 앱</a>
+            <a href="https://www.wsop.com/schedule/" target="_blank">🌐 WSOP 스케줄</a>
+            <a href="#contact">문의하기</a>
+        </nav>
+    </header>
+
+    <!-- 히어로 섹션 (메인 대문) -->
+    <section class="hero">
+        <h1>혁신을 만드는 우리 회사</h1>
+        <p>체계적인 일정 관리부터 전문적인 서비스까지, 당신의 비즈니스 성공을 함께 만듭니다.</p>
+        <a href="todo.html" class="hero-btn">To-Do 서비스 체험하기</a>
+    </section>
+
+    <!-- 주요 서비스 소개 -->
+    <section id="services" class="container">
+        <h2 class="section-title">주요 서비스</h2>
+        <div class="services-grid">
+            <div class="card">
+                <div class="card-icon">📝</div>
+                <h3>할 일 관리 솔루션</h3>
+                <p>일정을 쉽고 빠르게 관리하고 완료 및 삭제 기능을 통해 개인 및 팀의 생산성을 최대로 끌어올립니다.</p>
+                <a href="todo.html" class="card-link">자세히 보기 &rarr;</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>WSOP 공식 일정 연결</h3>
+                <p>글로벌 토너먼트 및 스케줄 정보를 실시간 공식 사이트로 바로 연결하여 빠르게 확인하세요.</p>
+                <a href="https://www.wsop.com/schedule/" target="_blank" class="card-link">스케줄 보러가기 &rarr;</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">💼</div>
+                <h3>비즈니스 컨설팅</h3>
+                <p>고객맞춤형 웹 포털 구축부터 IT 솔루션 도입까지 전문적인 가이드를 제공합니다.</p>
+                <a href="#contact" class="card-link">상담 신청 &rarr;</a>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- 문의하기 섹션 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">문의하기</h2>
+            <form class="contact-form" onsubmit="alert('문의가 접수되었습니다!'); return false;">
+                <input type="text" placeholder="성함 / 회사명" required>
+                <input type="email" placeholder="이메일 주소" required>
+                <textarea rows="4" placeholder="문의 내용을 입력해주세요." required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2026 My Company. All rights reserved. | Powered by GitHub Pages</p>
+    </footer>
+
 </body>
 </html>
+git checkout main
+git pull origin main
+git checkout -b feature/upgrade-homepage
