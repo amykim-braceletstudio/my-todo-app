@@ -24,12 +24,33 @@
         .dropdown-menu a:hover { background-color: #f8f9fa; color: #000; }
         nav li.dropdown:hover .dropdown-menu { display: block; }
 
-        /* Hero Section - Video/Logo Only */
-        .hero { background: #000; color: white; height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden; }
-        .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); opacity: 0.4; object-fit: cover; }
-        .hero-logo { position: relative; z-index: 2; font-size: 3.5rem; font-weight: 900; letter-spacing: -1px; }
+        /* Hero Section Container */
+        .hero { 
+            background-color: #000000; 
+            color: #ffffff; 
+            height: 75vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            position: relative; 
+            overflow: hidden; 
+        }
 
-        /* Main Shortcuts Section */
+        /* Video Styling (밝기 100% 원본 선명도 유지) */
+        .hero-video { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            width: 100%; 
+            height: 100%; 
+            transform: translate(-50%, -50%); 
+            object-fit: cover; 
+            opacity: 1.0; 
+            z-index: 1; 
+            pointer-events: none;
+        }
+
+        /* Main Shortcuts Grid */
         .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
         .shortcuts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
         .card { background: #fdfdfd; border: 1px solid #eaeaea; border-radius: 12px; padding: 40px 30px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; }
@@ -43,6 +64,7 @@
 </head>
 <body>
 
+    <!-- GNB Navigation -->
     <header>
         <a href="index.html" class="logo">BRACELET STUDIO</a>
         <nav>
@@ -82,15 +104,14 @@
         </nav>
     </header>
 
-    <!-- Hero Section (로고만 유지) -->
+    <!-- Hero Section (비디오만 풀화면으로 출력) -->
     <section class="hero">
-        <video class="hero-video" autoplay loop muted playsinline poster="08.png">
-            <source src="bg-video.mp4" type="video/mp4">
+        <video id="bgVideo" class="hero-video" autoplay loop muted playsinline preload="auto">
+            <source src="./bg-video.mp4" type="video/mp4">
         </video>
-        <div class="hero-logo">BRACELET STUDIO</div>
     </section>
 
-    <!-- 바로가기 메인 그리드 -->
+    <!-- 바로가기 카드리스트 -->
     <main class="container">
         <div class="shortcuts-grid">
             <div class="card">
@@ -131,5 +152,11 @@
         <p>&copy; 2026 BRACELET STUDIO. All rights reserved.</p>
     </footer>
 
-</body>
-</html>
+    <!-- 강제 자동재생 실행 보장 스크립트 -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('bgVideo');
+            if (video) {
+                video.muted = true;
+                video.play().catch(error => {
+                    console.log("자동재생 오류 방지 처리:",
