@@ -6,63 +6,285 @@
     <title>BRACELET STUDIO</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #ffffff; color: #111; line-height: 1.6; }
         
-        /* GNB Navigation */
-        header { background-color: #ffffff; padding: 1.2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: #111; text-decoration: none; letter-spacing: -0.5px; }
+        /* Global Black Theme */
+        body { 
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; 
+            background-color: #0b0b0b; 
+            color: #ffffff; 
+            line-height: 1.6; 
+            overflow-x: hidden;
+        }
         
-        nav ul { list-style: none; display: flex; align-items: center; gap: 2rem; }
+        /* Premium Gold Palette Variables */
+        :root {
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa7c11;
+            --bg-dark: #0b0b0b;
+            --bg-card: #121212;
+            --border-gold-subtle: rgba(212, 175, 55, 0.15);
+        }
+
+        /* Dark Header Navigation */
+        header { 
+            background-color: rgba(10, 10, 10, 0.9); 
+            backdrop-filter: blur(12px);
+            padding: 1.1rem 3rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15); 
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            width: 100%;
+            z-index: 1000; 
+        }
+
+        /* Top Brand Logo Image */
+        .logo-img { 
+            height: 40px; 
+            width: auto; 
+            display: block; 
+            object-fit: contain;
+            filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.2));
+        }
+        
+        nav ul { list-style: none; display: flex; align-items: center; gap: 2.5rem; }
         nav li { position: relative; }
-        nav a { color: #555; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: block; padding: 5px 0; }
-        nav a:hover, nav a.active { color: #000; }
+        nav a { 
+            color: #e0e0e0; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.88rem; 
+            letter-spacing: 0.8px; 
+            display: block; 
+            padding: 6px 0; 
+            transition: color 0.3s; 
+        }
+        nav a:hover, nav a.active { color: var(--gold-primary); }
+
+        /* Header Right: Language Switcher */
+        .lang-switch { 
+            display: flex; 
+            align-items: center; 
+            background: #151515; 
+            border: 1px solid var(--border-gold-subtle); 
+            border-radius: 20px; 
+            padding: 3px; 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+        }
+        .lang-btn { padding: 4px 11px; border-radius: 15px; color: #888; cursor: pointer; text-decoration: none; transition: 0.2s; }
+        .lang-btn.active { background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); color: #000; font-weight: 800; }
 
         /* Dropdown */
-        .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #ffffff; min-width: 220px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); border-radius: 8px; border: 1px solid #eee; padding: 10px 0; z-index: 1001; }
+        .dropdown-menu { 
+            display: none; 
+            position: absolute; 
+            top: 100%; 
+            left: 0; 
+            background: #141414; 
+            min-width: 210px; 
+            box-shadow: 0 12px 35px rgba(0,0,0,0.8); 
+            border-radius: 8px; 
+            border: 1px solid var(--border-gold-subtle); 
+            padding: 10px 0; 
+            z-index: 1001; 
+        }
         .dropdown-menu li { width: 100%; }
-        .dropdown-menu a { padding: 10px 20px; font-size: 0.88rem; color: #666; font-weight: 600; }
-        .dropdown-menu a:hover { background-color: #f8f9fa; color: #000; }
+        .dropdown-menu a { padding: 10px 20px; font-size: 0.82rem; color: #bbb; font-weight: 600; }
+        .dropdown-menu a:hover { background-color: #1f1f1f; color: var(--gold-primary); }
         nav li.dropdown:hover .dropdown-menu { display: block; }
 
-        /* Hero Section Container (동영상에 맞게 검은 배경) */
+        /* Hero Section */
         .hero { 
-            background-color: #000000; 
+            background-color: #000; 
+            height: 100vh; 
             width: 100%;
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
+            position: relative; 
             overflow: hidden; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
         }
 
-        /* Video Styling (원본 비율 및 크기대로 출력) */
+        /* Video Background */
         .hero-video { 
-            max-width: 100%; 
-            height: auto; 
-            display: block;
-            object-fit: contain; /* 잘림 없이 원본 비율 고수 */
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            width: 100%; 
+            height: 100%; 
+            transform: translate(-50%, -50%); 
+            object-fit: cover; 
+            opacity: 1.0; 
+            z-index: 1; 
+            pointer-events: none;
         }
 
-        /* Main Shortcuts Grid */
-        .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
-        .shortcuts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-        .card { background: #fdfdfd; border: 1px solid #eaeaea; border-radius: 12px; padding: 40px 30px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
-        .card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; word-break: keep-all; }
-        .card p { color: #666; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; word-break: keep-all; }
-        .card-link { color: #111; text-decoration: none; font-weight: 800; font-size: 1rem; display: inline-flex; align-items: center; gap: 5px; }
+        /* Hero Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            pointer-events: none;
+        }
 
-        footer { background-color: #f9f9f9; border-top: 1px solid #eee; color: #888; text-align: center; padding: 35px; font-size: 0.85rem; }
+        .scroll-text {
+            color: var(--gold-primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+        }
+
+        .scroll-line {
+            width: 1.5px;
+            height: 30px;
+            background: linear-gradient(180deg, var(--gold-primary) 0%, rgba(212,175,55,0) 100%);
+            animation: scrollPulse 1.8s infinite ease-in-out;
+        }
+
+        @keyframes scrollPulse {
+            0% { transform: scaleY(0.4); opacity: 0.3; transform-origin: top; }
+            50% { transform: scaleY(1); opacity: 1; transform-origin: top; }
+            100% { transform: scaleY(0.4); opacity: 0.3; transform-origin: bottom; }
+        }
+
+        /* Dark Gold Theme Sections Area */
+        .content-area { 
+            background-color: #0b0b0b; 
+            color: #ffffff; 
+            padding: 120px 40px; 
+            position: relative; 
+            z-index: 2; 
+        }
+        .container { max-width: 1300px; margin: 0 auto; }
+
+        /* Section Item Block (스크롤 애니메이션 준비) */
+        .section-item {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 70px;
+            align-items: center;
+            padding: 100px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+            position: relative;
+
+            /* Fade in & Slide Up initial state */
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-item:last-child { border-bottom: none; }
+
+        /* Left Side: Watermark Number + Enlarged Gold English Title */
+        .left-col {
+            position: relative;
+        }
+        .bg-number {
+            font-size: 10rem;
+            font-weight: 900;
+            color: rgba(212, 175, 55, 0.05);
+            position: absolute;
+            top: -75px;
+            left: -15px;
+            z-index: 1;
+            line-height: 1;
+            user-select: none;
+        }
+        .section-eng-title {
+            position: relative;
+            z-index: 2;
+            font-size: 2.8rem; /* 영문 크기 확대 */
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -0.8px;
+            text-transform: uppercase;
+            color: #ffffff;
+            word-break: keep-all;
+        }
+        .section-eng-title span {
+            color: var(--gold-primary);
+        }
+
+        /* Right Side: Korean Heading + Paragraph + Gold Link Button */
+        .right-col {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+        .section-kor-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #f5f5f5;
+            letter-spacing: -0.3px;
+        }
+        .section-desc {
+            color: #a0a0a0;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            word-break: keep-all;
+        }
+        .section-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold-primary);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 0.8px;
+            margin-top: 10px;
+            transition: transform 0.25s, color 0.25s;
+        }
+        .section-link:hover {
+            color: var(--gold-light);
+            transform: translateX(8px);
+        }
+
+        footer { 
+            background-color: #050505; 
+            border-top: 1px solid rgba(212, 175, 55, 0.15); 
+            color: #666; 
+            text-align: center; 
+            padding: 45px; 
+            font-size: 0.85rem; 
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .section-item { grid-template-columns: 1fr; gap: 35px; padding: 70px 0; }
+            .bg-number { font-size: 7rem; top: -50px; }
+            .section-eng-title { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- GNB Navigation -->
+    <!-- GNB Dark Navigation -->
     <header>
-        <a href="index.html" class="logo">BRACELET STUDIO</a>
+        <a href="index.html">
+            <img src="./bracelet-studio-logo.png" alt="BRACELET STUDIO" class="logo-img" onerror="this.onerror=null; this.src='./bracelet-studio-logo.jpg';">
+        </a>
         <nav>
             <ul>
                 <li class="dropdown">
-                    <a href="about.html">ABOUT US ▾</a>
+                    <a href="about.html">ABOUT US</a>
                     <ul class="dropdown-menu">
                         <li><a href="about.html#about-us">ABOUT US</a></li>
                         <li><a href="about.html#who-we-are">WHO WE ARE</a></li>
@@ -71,21 +293,21 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="work.html">OUR WORK ▾</a>
+                    <a href="work.html">WHAT WE DO</a>
                     <ul class="dropdown-menu">
                         <li><a href="work.html#what-we-do">WHAT WE DO</a></li>
                         <li><a href="work.html#our-teams">OUR TEAMS</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="culture.html">CULTURE ▾</a>
+                    <a href="culture.html">CULTURE</a>
                     <ul class="dropdown-menu">
                         <li><a href="culture.html#bracelet-code">BRACELET CODE</a></li>
                         <li><a href="culture.html#life-in-bracelet">LIFE IN BRACELET</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="careers.html">CAREERS ▾</a>
+                    <a href="careers.html">CAREERS</a>
                     <ul class="dropdown-menu">
                         <li><a href="careers.html#positions">OPEN POSITIONS</a></li>
                         <li><a href="careers.html#process">RECRUITMENT PROCESS</a></li>
@@ -94,32 +316,121 @@
                 </li>
             </ul>
         </nav>
+
+        <!-- KR / EN Language Switcher -->
+        <div class="lang-switch">
+            <span class="lang-btn active">KR</span>
+            <span class="lang-btn">EN</span>
+        </div>
     </header>
 
-    <!-- Hero Section (동영상 원본 사이즈) -->
+    <!-- Hero Section -->
     <section class="hero">
         <video id="bgVideo" class="hero-video" autoplay loop muted playsinline preload="auto">
             <source src="./bg-video.mp4" type="video/mp4">
         </video>
+
+        <!-- 하단 중앙 Scroll to explore -->
+        <div class="scroll-indicator">
+            <span class="scroll-text">Scroll to explore</span>
+            <div class="scroll-line"></div>
+        </div>
     </section>
 
-    <!-- 바로가기 카드리스트 -->
-    <main class="container">
-        <div class="shortcuts-grid">
-            <div class="card">
-                <div>
-                    <h3>We Build the Future of Live Poker</h3>
-                    <p>BRACELET STUDIO는 라이브 포커를 중심으로 기술, 콘텐츠, 플랫폼, 프로덕션을 하나의 경험으로 연결합니다.</p>
+    <!-- 블랙 & 골드 시그니처 세션 영역 -->
+    <div class="content-area">
+        <main class="container">
+            
+            <!-- 01 ABOUT US -->
+            <div class="section-item">
+                <div class="left-col">
+                    <div class="bg-number">01</div>
+                    <div class="section-eng-title">WE BUILD THE FUTURE<br><span>OF LIVE POKER</span></div>
                 </div>
-                <a href="about.html" class="card-link">ABOUT US ↗</a>
+                <div class="right-col">
+                    <div class="section-kor-title">라이브 포커 생태계의 새로운 미래</div>
+                    <div class="section-desc">BRACELET STUDIO는 라이브 포커를 중심으로 기술, 콘텐츠, 플랫폼, 프로덕션을 하나의 완벽한 경험으로 연결합니다. 우리의 여정은 세계 최고 수준의 몰입감을 만들어갑니다.</div>
+                    <a href="about.html" class="section-link">ABOUT US ↗</a>
+                </div>
             </div>
 
-            <div class="card">
-                <div>
-                    <h3>From the Table to the World</h3>
-                    <p>테이블 위의 순간이 전 세계로 전해지기까지, 보이지 않는 곳에서 수많은 기술과 사람의 움직임이 이어집니다.</p>
+            <!-- 02 WHAT WE DO -->
+            <div class="section-item">
+                <div class="left-col">
+                    <div class="bg-number">02</div>
+                    <div class="section-eng-title">FROM THE TABLE<br><span>TO THE WORLD</span></div>
                 </div>
-                <a href="work.html#what-we-do" class="card-link">WHAT WE DO ↗</a>
+                <div class="right-col">
+                    <div class="section-kor-title">테이블 위의 순간을 전 세계로</div>
+                    <div class="section-desc">테이블 위의 숨막히는 순간이 전 세계로 전해지기까지, 보이지 않는 곳에서 수많은 독자적 IT 기술과 프로덕션 크루의 고도화된 움직임이 이어집니다.</div>
+                    <a href="work.html#what-we-do" class="section-link">WHAT WE DO ↗</a>
+                </div>
             </div>
 
-            <div class="card">
+            <!-- 03 CULTURE -->
+            <div class="section-item">
+                <div class="left-col">
+                    <div class="bg-number">03</div>
+                    <div class="section-eng-title">EXPERTISE WITH OWNERSHIP,<br><span>COLLABORATION WITH PURPOSE</span></div>
+                </div>
+                <div class="right-col">
+                    <div class="section-kor-title">오너십과 목적 있는 협업</div>
+                    <div class="section-desc">우리는 각자의 전문성을 깊이 존중하며, 개인의 역할을 넘어 하나의 명확한 목표를 향해 함께 움직입니다. 탁월함에 대한 고집이 우리의 문화입니다.</div>
+                    <a href="culture.html" class="section-link">CULTURE ↗</a>
+                </div>
+            </div>
+
+            <!-- 04 CAREERS -->
+            <div class="section-item">
+                <div class="left-col">
+                    <div class="bg-number">04</div>
+                    <div class="section-eng-title">THE FUTURE OF PLAY<br><span>OUR NEXT CHAPTER</span></div>
+                </div>
+                <div class="right-col">
+                    <div class="section-kor-title">우리가 만들어갈 포커의 미래</div>
+                    <div class="section-desc">글로벌 라이브 이벤트의 운영 방식부터 플레이어가 경험하는 서비스, 그리고 포커를 바라보는 새로운 시각을 함께 구축해 나갈 동료를 기다립니다.</div>
+                    <a href="careers.html" class="section-link">CAREERS ↗</a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 BRACELET STUDIO. All rights reserved.</p>
+    </footer>
+
+    <!-- 자바스크립트: 비디오 자동재생 & 스크롤 등장 애니메이션 -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // 비디오 자동재생 보장
+            const video = document.getElementById('bgVideo');
+            if (video) {
+                video.muted = true;
+                video.play().catch(error => {
+                    console.log("자동재생 방지 처리:", error);
+                });
+            }
+
+            // 스크롤 시 감지하여 Fade-in & Slide-up 등장 효과
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const sections = document.querySelectorAll('.section-item');
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+
+</body>
+</html>
