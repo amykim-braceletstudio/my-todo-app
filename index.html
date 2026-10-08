@@ -24,30 +24,22 @@
         .dropdown-menu a:hover { background-color: #f8f9fa; color: #000; }
         nav li.dropdown:hover .dropdown-menu { display: block; }
 
-        /* Hero Section Container */
+        /* Hero Section Container (동영상에 맞게 검은 배경) */
         .hero { 
             background-color: #000000; 
-            color: #ffffff; 
-            height: 75vh; 
+            width: 100%;
             display: flex; 
             justify-content: center; 
             align-items: center; 
-            position: relative; 
             overflow: hidden; 
         }
 
-        /* Video Styling (밝기 100% 원본 선명도 유지) */
+        /* Video Styling (원본 비율 및 크기대로 출력) */
         .hero-video { 
-            position: absolute; 
-            top: 50%; 
-            left: 50%; 
-            width: 100%; 
-            height: 100%; 
-            transform: translate(-50%, -50%); 
-            object-fit: cover; 
-            opacity: 1.0; 
-            z-index: 1; 
-            pointer-events: none;
+            max-width: 100%; 
+            height: auto; 
+            display: block;
+            object-fit: contain; /* 잘림 없이 원본 비율 고수 */
         }
 
         /* Main Shortcuts Grid */
@@ -104,7 +96,7 @@
         </nav>
     </header>
 
-    <!-- Hero Section (비디오만 풀화면으로 출력) -->
+    <!-- Hero Section (동영상 원본 사이즈) -->
     <section class="hero">
         <video id="bgVideo" class="hero-video" autoplay loop muted playsinline preload="auto">
             <source src="./bg-video.mp4" type="video/mp4">
@@ -131,32 +123,3 @@
             </div>
 
             <div class="card">
-                <div>
-                    <h3>Expertise with Ownership, Collaboration with Purpose</h3>
-                    <p>우리는 각자의 전문성을 깊이 존중하며, 개인의 역할을 넘어 하나의 목표를 향해 함께 움직입니다.</p>
-                </div>
-                <a href="culture.html" class="card-link">CULTURE ↗</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>Building What’s Next</h3>
-                    <p>글로벌 라이브 이벤트의 운영 방식부터 플레이어가 경험하는 서비스, 그리고 포커를 바라보는 새로운 시각을 만들어갑니다.</p>
-                </div>
-                <a href="careers.html" class="card-link">CAREERS ↗</a>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 BRACELET STUDIO. All rights reserved.</p>
-    </footer>
-
-    <!-- 강제 자동재생 실행 보장 스크립트 -->
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const video = document.getElementById('bgVideo');
-            if (video) {
-                video.muted = true;
-                video.play().catch(error => {
-                    console.log("자동재생 오류 방지 처리:",
